@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.LoginController"
+            prefWidth="400" prefHeight="300">
+
+    <VBox spacing="15" alignment="CENTER"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          styleClass="root">
+
+        <Label text="SportConnect" styleClass="title"/>
+
+        <TextField fx:id="txtUsuario" promptText="Usuario"/>
+
+        <PasswordField fx:id="txtPassword" promptText="Contraseña"/>
+
+        <Button text="Iniciar sesión" onAction="#onLogin"/>
+
+        <Label fx:id="lblMensaje" text="" styleClass="message"/>
+
+    </VBox>
+
+</AnchorPane>

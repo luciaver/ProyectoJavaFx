@@ -1,0 +1,23 @@
+.root {
+    -fx-padding: 30;
+    -fx-background-color: #f5f7fa;
+}
+
+.title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #1e88e5;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1565c0;
+}
+
+.message {
+    -fx-font-size: 13px;
+}
