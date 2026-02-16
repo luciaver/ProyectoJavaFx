@@ -16,17 +16,19 @@ public class LoginController {
     @FXML
     private Label lblMensaje;
 
-    private AuthService authService = new AuthService();
-
     @FXML
     private void onLogin() {
+        // Obtener lo que escribió el usuario
         String usuario = txtUsuario.getText();
         String password = txtPassword.getText();
 
-        if (authService.validarCredenciales(usuario, password)) {
-            lblMensaje.setText("Login correcto ");
+        // Verificar si es correcto
+        if (usuario.equals("admin") && password.equals("1234")) {
+            lblMensaje.setText(" Login correcto!");
+            lblMensaje.setStyle("-fx-text-fill: green;");
         } else {
-            lblMensaje.setText("Usuario o contraseña incorrectos ");
+            lblMensaje.setText("Usuario o contraseña incorrectos");
+            lblMensaje.setStyle("-fx-text-fill: red;");
         }
     }
 }

@@ -3,25 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.controller.LoginController"
-            prefWidth="400" prefHeight="300">
+<AnchorPane prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
 
-    <VBox spacing="15" alignment="CENTER"
-          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
-          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
-          styleClass="root">
+    <VBox alignment="CENTER" layoutX="-1.0" prefHeight="300.0" prefWidth="407.0" spacing="15" styleClass="root" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
 
-        <Label text="SportConnect" styleClass="title"/>
+        <Label styleClass="title" text="GesSport" />
 
-        <TextField fx:id="txtUsuario" promptText="Usuario"/>
+        <TextField fx:id="txtUsuario" prefHeight="26.0" prefWidth="374.0" promptText="Usuario" text="admin" />
 
-        <PasswordField fx:id="txtPassword" promptText="Contraseña"/>
+        <PasswordField fx:id="txtPassword" prefHeight="26.0" prefWidth="364.0" promptText="Contraseña" text="1234" />
 
-        <Button text="Iniciar sesión" onAction="#onLogin"/>
+        <Button onAction="#onLogin" text="Iniciar sesión" />
 
-        <Label fx:id="lblMensaje" text="" styleClass="message"/>
+        <Label fx:id="lblMensaje" styleClass="message" text="" />
 
     </VBox>
 
