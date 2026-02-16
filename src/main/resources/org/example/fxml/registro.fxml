@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.controller.RegistroController"
+           prefHeight="600.0" prefWidth="900.0"
+           styleClass="fondo">
+
+    <VBox alignment="CENTER" spacing="18" styleClass="caja-login" maxWidth="420">
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+
+        <Label text="Crear Cuenta" styleClass="titulo"/>
+
+        <Region prefHeight="20"/>
+
+        <VBox spacing="8" prefWidth="340">
+            <Label text="Nombre Completo" styleClass="etiqueta"/>
+            <TextField fx:id="txtNombre"
+                       promptText="Tu nombre completo"
+                       styleClass="campo"/>
+        </VBox>
+
+        <VBox spacing="8" prefWidth="340">
+            <Label text="Usuario" styleClass="etiqueta"/>
+            <TextField fx:id="txtUsuario"
+                       promptText="Mínimo 3 caracteres"
+                       styleClass="campo"/>
+        </VBox>
+
+        <VBox spacing="8" prefWidth="340">
+            <Label text="Email (opcional)" styleClass="etiqueta"/>
+            <TextField fx:id="txtEmail"
+                       promptText="tu@email.com"
+                       styleClass="campo"/>
+        </VBox>
+
+        <VBox spacing="8" prefWidth="340">
+            <Label text="Contraseña" styleClass="etiqueta"/>
+            <PasswordField fx:id="txtPassword"
+                           promptText="Mínimo 4 caracteres"
+                           styleClass="campo"/>
+        </VBox>
+
+        <VBox spacing="8" prefWidth="340">
+            <Label text="Confirmar Contraseña" styleClass="etiqueta"/>
+            <PasswordField fx:id="txtPasswordConfirm"
+                           promptText="Repite tu contraseña"
+                           styleClass="campo"/>
+        </VBox>
+
+        <Label fx:id="lblMensaje" styleClass="mensaje" text=""/>
+
+        <Button text="Registrarse"
+                onAction="#onRegistrar"
+                styleClass="boton-login"
+                prefWidth="340"
+                defaultButton="true"/>
+
+        <Region prefHeight="5"/>
+
+        <Button text="Ya tengo cuenta - Volver al Login"
+                onAction="#onVolver"
+                styleClass="boton-registro"
+                prefWidth="340"/>
+
+    </VBox>
+
+</StackPane>

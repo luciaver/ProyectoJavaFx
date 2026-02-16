@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.controller.LoginController"
+           prefHeight="600.0" prefWidth="900.0"
+           styleClass="fondo">
 
-    <VBox alignment="CENTER" layoutX="-1.0" prefHeight="300.0" prefWidth="407.0" spacing="15" styleClass="root" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
 
-        <Label styleClass="title" text="GesSport" />
+    <VBox alignment="CENTER" spacing="20" styleClass="caja-login" maxWidth="420">
+        <padding>
+            <Insets top="45" right="45" bottom="45" left="45"/>
+        </padding>
 
-        <TextField fx:id="txtUsuario" prefHeight="26.0" prefWidth="374.0" promptText="Usuario" text="admin" />
+        <Label text="MultiSports" styleClass="titulo"/>
 
-        <PasswordField fx:id="txtPassword" prefHeight="26.0" prefWidth="364.0" promptText="Contraseña" text="1234" />
+        <Region prefHeight="25"/>
 
-        <Button onAction="#onLogin" text="Iniciar sesión" />
+        <VBox spacing="8" prefWidth="330">
+            <Label text="Usuario" styleClass="etiqueta"/>
+            <TextField fx:id="txtUsuario"
+                       promptText="Ingresa tu usuario"
+                       styleClass="campo"
+                       text=""/>
+        </VBox>
 
-        <Label fx:id="lblMensaje" styleClass="message" text="" />
+        <VBox spacing="8" prefWidth="330">
+            <Label text="Contraseña" styleClass="etiqueta"/>
+            <PasswordField fx:id="txtPassword"
+                           promptText="Ingresa tu contraseña"
+                           styleClass="campo"
+                           text=""/>
+        </VBox>
+
+        <Label fx:id="lblMensaje" styleClass="mensaje" text=""/>
+
+        <Button text="Iniciar Sesión"
+                onAction="#onLogin"
+                styleClass="boton-login"
+                prefWidth="330"
+                defaultButton="true"/>
+
+        <Region prefHeight="10"/>
+
+        <Button text="Registrarse"
+                onAction="#onRegistro"
+                styleClass="boton-registro"
+                prefWidth="330"/>
 
     </VBox>
 
-</AnchorPane>
+</StackPane>

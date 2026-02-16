@@ -1,10 +1,18 @@
 package org.example.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.model.Usuario;
+import org.example.service.AuthService;
 
+/**
+ * Controlador de la pantalla de login
+ */
 public class LoginController {
 
     @FXML
@@ -16,19 +24,81 @@ public class LoginController {
     @FXML
     private Label lblMensaje;
 
+    private AuthService authService = new AuthService();
+
     @FXML
     private void onLogin() {
-        // Obtener lo que escribió el usuario
-        String usuario = txtUsuario.getText();
+        //  Obtener lo que escribió el usuario
+        String usuario = txtUsuario.getText().trim();
         String password = txtPassword.getText();
 
-        // Verificar si es correcto
-        if (usuario.equals("admin") && password.equals("1234")) {
-            lblMensaje.setText(" Login correcto!");
-            lblMensaje.setStyle("-fx-text-fill: green;");
-        } else {
-            lblMensaje.setText("Usuario o contraseña incorrectos");
-            lblMensaje.setStyle("-fx-text-fill: red;");
+        //  Validar que no estén vacíos
+        if (usuario.isEmpty() || password.isEmpty()) {
+            mostrarError("Por favor completa todos los campos");
+            return;
         }
+
+        // 3. Verificar las credenciales usando el servicio
+        Usuario usuarioEncontrado = authService.validarCredenciales(usuario, password);
+
+        if (usuarioEncontrado != null) {
+            mostrarExito("¡Bienvenido/a!");
+
+            // Esperar un poco y asi se carga lapantalla principal
+            new Thread(() -> {
+                try {
+                    Thread.sleep(500);
+                    javafx.application.Platform.runLater(() -> cargarPantallaPrincipal(usuarioEncontrado));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } else {
+            mostrarError("Usuario o contraseña incorrectos");
+        }
+    }
+
+
+    @FXML
+    private void onRegistro() {
+        try {
+            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/registro.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarError("Error al abrir el registro");
+        }
+    }
+
+
+    private void cargarPantallaPrincipal(Usuario usuario) {
+        try {
+            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/home.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());
+
+            HomeController homeController = loader.getController();
+            homeController.inicializar(usuario);
+
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarError("Error al cargar la pantalla principal");
+        }
+    }
+
+    private void mostrarError(String mensaje) {
+        lblMensaje.setText(mensaje);
+        lblMensaje.setStyle("-fx-text-fill: #dc2626;");
+    }
+
+
+    private void mostrarExito(String mensaje) {
+        lblMensaje.setText(mensaje);
+        lblMensaje.setStyle("-fx-text-fill: #10b981;");
     }
 }
