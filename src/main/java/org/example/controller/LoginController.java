@@ -10,13 +10,10 @@ import javafx.stage.Stage;
 import org.example.model.Usuario;
 import org.example.service.AuthService;
 
-/**
- * Controlador de la pantalla de login
- */
 public class LoginController {
 
-    @FXML
-    private TextField txtUsuario;
+   @FXML
+    private TextField txtEmail;
 
     @FXML
     private PasswordField txtPassword;
@@ -29,22 +26,25 @@ public class LoginController {
     @FXML
     private void onLogin() {
         //  Obtener lo que escribió el usuario
-        String usuario = txtUsuario.getText().trim();
+        String email = txtEmail.getText().trim();
         String password = txtPassword.getText();
 
         //  Validar que no estén vacíos
-        if (usuario.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             mostrarError("Por favor completa todos los campos");
             return;
         }
 
-        // 3. Verificar las credenciales usando el servicio
-        Usuario usuarioEncontrado = authService.validarCredenciales(usuario, password);
+        if (!email.contains("@") || !email.contains(".")) {
+            mostrarError("Por favor ingresa un email válido");
+            return;
+        }
+
+        Usuario usuarioEncontrado = authService.validarCredenciales(email, password);
 
         if (usuarioEncontrado != null) {
             mostrarExito("¡Bienvenido/a!");
 
-            // Esperar un poco y asi se carga lapantalla principal
             new Thread(() -> {
                 try {
                     Thread.sleep(500);
@@ -54,7 +54,7 @@ public class LoginController {
                 }
             }).start();
         } else {
-            mostrarError("Usuario o contraseña incorrectos");
+            mostrarError("Email o contraseña incorrectos");
         }
     }
 
@@ -62,7 +62,7 @@ public class LoginController {
     @FXML
     private void onRegistro() {
         try {
-            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/registro.fxml"));
             Scene scene = new Scene(loader.load());
             scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());
@@ -76,7 +76,7 @@ public class LoginController {
 
     private void cargarPantallaPrincipal(Usuario usuario) {
         try {
-            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/home.fxml"));
             Scene scene = new Scene(loader.load());
             scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());

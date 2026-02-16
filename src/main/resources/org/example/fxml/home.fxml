@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!-- Pantalla de bienvenida -->
 <StackPane xmlns="http://javafx.com/javafx/17.0.12"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="org.example.controller.HomeController"
@@ -12,29 +11,28 @@
            styleClass="fondo">
 
 
-    <VBox alignment="CENTER" spacing="30" styleClass="caja-login" maxWidth="500">
+    <VBox alignment="CENTER" spacing="25" styleClass="caja-login" maxWidth="450">
         <padding>
-            <Insets top="50" right="50" bottom="50" left="50"/>
+            <Insets top="45" right="45" bottom="45" left="45"/>
         </padding>
 
 
         <Label text="¡Bienvenido/a!" styleClass="titulo"/>
         <Label fx:id="lblNombreUsuario"
                text="Usuario"
-               style="-fx-font-size: 26px; -fx-text-fill: #ec4899; -fx-font-weight: bold;"/>
-
-        <Region prefHeight="30"/>
+               style="-fx-font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; -fx-font-size: 24px; -fx-text-fill: #60a5fa; -fx-font-weight: 600;"/>
+        <Region prefHeight="20"/>
 
         <Label text="Has iniciado sesión correctamente en MultiSports"
-               style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center;"
+               style="-fx-font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; -fx-font-size: 14px; -fx-text-fill: #cbd5e1; -fx-text-alignment: center;"
                wrapText="true"/>
 
-        <Region prefHeight="20"/>
+        <Region prefHeight="15"/>
 
         <Button text="Cerrar Sesión"
                 onAction="#onCerrarSesion"
                 styleClass="boton-registro"
-                prefWidth="300"/>
+                prefWidth="280"/>
 
 
     </VBox>

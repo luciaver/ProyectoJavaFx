@@ -4,31 +4,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+<StackPane xmlns="http://javafx.com/javafx"
+
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="org.example.controller.LoginController"
            prefHeight="600.0" prefWidth="900.0"
            styleClass="fondo">
 
 
-    <VBox alignment="CENTER" spacing="20" styleClass="caja-login" maxWidth="420">
+    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="370">
         <padding>
-            <Insets top="45" right="45" bottom="45" left="45"/>
+            <Insets top="35" right="35" bottom="35" left="35"/>
         </padding>
 
         <Label text="MultiSports" styleClass="titulo"/>
-
         <Region prefHeight="25"/>
 
-        <VBox spacing="8" prefWidth="330">
-            <Label text="Usuario" styleClass="etiqueta"/>
-            <TextField fx:id="txtUsuario"
-                       promptText="Ingresa tu usuario"
-                       styleClass="campo"
-                       text=""/>
+        <VBox spacing="8" prefWidth="310">
+            <Label text="Email" styleClass="etiqueta"/>
+            <TextField fx:id="txtEmail"
+                       promptText="tu@email.com"
+                       styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="330">
+        <VBox spacing="8" prefWidth="310">
             <Label text="Contraseña" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPassword"
                            promptText="Ingresa tu contraseña"
@@ -41,10 +40,10 @@
         <Button text="Iniciar Sesión"
                 onAction="#onLogin"
                 styleClass="boton-login"
-                prefWidth="330"
+                prefWidth="310"
                 defaultButton="true"/>
 
-        <Region prefHeight="10"/>
+        <Region prefHeight="8"/>
 
         <Button text="Registrarse"
                 onAction="#onRegistro"

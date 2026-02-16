@@ -10,32 +10,32 @@
            prefHeight="600.0" prefWidth="900.0"
            styleClass="fondo">
 
-    <VBox alignment="CENTER" spacing="18" styleClass="caja-login" maxWidth="420">
+    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="380">
         <padding>
-            <Insets top="40" right="40" bottom="40" left="40"/>
+            <Insets top="30" right="30" bottom="30" left="30"/>
         </padding>
 
 
         <Label text="Crear Cuenta" styleClass="titulo"/>
+        <Region prefHeight="15"/>
 
-        <Region prefHeight="20"/>
-
-        <VBox spacing="8" prefWidth="340">
+        <VBox spacing="7" prefWidth="320">
             <Label text="Nombre Completo" styleClass="etiqueta"/>
             <TextField fx:id="txtNombre"
                        promptText="Tu nombre completo"
                        styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="340">
-            <Label text="Usuario" styleClass="etiqueta"/>
-            <TextField fx:id="txtUsuario"
-                       promptText="Mínimo 3 caracteres"
-                       styleClass="campo"/>
+        <VBox spacing="7" prefWidth="320">
+        <Label text="Apellidos" styleClass="etiqueta"/>
+        <TextField fx:id="txtApellidos"
+                   promptText="Tus apellidos"
+                   styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="340">
-            <Label text="Email (opcional)" styleClass="etiqueta"/>
+
+        <VBox spacing="7" prefWidth="340">
+            <Label text="Email" styleClass="etiqueta"/>
             <TextField fx:id="txtEmail"
                        promptText="tu@email.com"
                        styleClass="campo"/>
@@ -48,7 +48,7 @@
                            styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="340">
+        <VBox spacing="8" prefWidth="320">
             <Label text="Confirmar Contraseña" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPasswordConfirm"
                            promptText="Repite tu contraseña"
@@ -65,7 +65,7 @@
 
         <Region prefHeight="5"/>
 
-        <Button text="Ya tengo cuenta - Volver al Login"
+        <Button text="Ya tengo una cuenta "
                 onAction="#onVolver"
                 styleClass="boton-registro"
                 prefWidth="340"/>
