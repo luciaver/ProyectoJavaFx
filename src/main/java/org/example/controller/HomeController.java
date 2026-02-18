@@ -16,7 +16,7 @@ public class HomeController {
 
     public void inicializar(Usuario usuario) {
         this.usuarioActual = usuario;
-        lblNombreUsuario.setText(usuario.getNombreCompleto());
+        lblNombreUsuario.setText(usuario.getNombre());
     }
 
     @FXML

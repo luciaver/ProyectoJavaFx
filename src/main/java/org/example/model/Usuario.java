@@ -22,6 +22,7 @@ package org.example.model;
         public void setNombre(String nombre) {
             this.nombre = nombre;
         }
+
         public String getApellidos() {
             return apellidos;
         }
@@ -46,6 +47,7 @@ package org.example.model;
             this.password = password;
         }
     }
+
 
 
 

@@ -12,9 +12,9 @@
            styleClass="fondo">
 
 
-    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="370">
+    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="340">
         <padding>
-            <Insets top="35" right="35" bottom="35" left="35"/>
+            <Insets top="50" right="35" bottom="50" left="35"/>
         </padding>
 
         <Label text="MultiSports" styleClass="titulo"/>
@@ -27,7 +27,7 @@
                        styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="310">
+        <VBox spacing="8" prefWidth="280">
             <Label text="Contraseña" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPassword"
                            promptText="Ingresa tu contraseña"

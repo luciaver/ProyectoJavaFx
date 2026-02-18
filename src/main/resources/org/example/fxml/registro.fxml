@@ -10,45 +10,43 @@
            prefHeight="600.0" prefWidth="900.0"
            styleClass="fondo">
 
-    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="380">
+    <VBox alignment="CENTER" spacing="8" styleClass="caja-registro" maxWidth="370" maxHeight="520">
         <padding>
-            <Insets top="30" right="30" bottom="30" left="30"/>
+            <Insets top="25" right="30" bottom="25" left="30"/>
         </padding>
 
-
         <Label text="Crear Cuenta" styleClass="titulo"/>
-        <Region prefHeight="15"/>
+        <Region prefHeight="5"/>
 
-        <VBox spacing="7" prefWidth="320">
+        <VBox spacing="4" prefWidth="310">
             <Label text="Nombre Completo" styleClass="etiqueta"/>
             <TextField fx:id="txtNombre"
                        promptText="Tu nombre completo"
                        styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="7" prefWidth="320">
-        <Label text="Apellidos" styleClass="etiqueta"/>
-        <TextField fx:id="txtApellidos"
-                   promptText="Tus apellidos"
-                   styleClass="campo"/>
+        <VBox spacing="4" prefWidth="310">
+            <Label text="Apellidos" styleClass="etiqueta"/>
+            <TextField fx:id="txtApellidos"
+                       promptText="Tus apellidos"
+                       styleClass="campo"/>
         </VBox>
 
-
-        <VBox spacing="7" prefWidth="340">
+        <VBox spacing="4" prefWidth="310">
             <Label text="Email" styleClass="etiqueta"/>
             <TextField fx:id="txtEmail"
                        promptText="tu@email.com"
                        styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="340">
+        <VBox spacing="4" prefWidth="310">
             <Label text="Contraseña" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPassword"
                            promptText="Mínimo 4 caracteres"
                            styleClass="campo"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="320">
+        <VBox spacing="4" prefWidth="310">
             <Label text="Confirmar Contraseña" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPasswordConfirm"
                            promptText="Repite tu contraseña"
@@ -60,15 +58,13 @@
         <Button text="Registrarse"
                 onAction="#onRegistrar"
                 styleClass="boton-login"
-                prefWidth="340"
+                prefWidth="310"
                 defaultButton="true"/>
 
-        <Region prefHeight="5"/>
-
-        <Button text="Ya tengo una cuenta "
+        <Button text="Ya tengo una cuenta"
                 onAction="#onVolver"
                 styleClass="boton-registro"
-                prefWidth="340"/>
+                prefWidth="310"/>
 
     </VBox>
 
