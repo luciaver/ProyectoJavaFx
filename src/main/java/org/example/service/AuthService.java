@@ -1,43 +1,28 @@
 package org.example.service;
 
+import org.example.dao.UsuarioDAO;
 import org.example.model.Usuario;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AuthService {
-    private static List<Usuario> usuarios = new ArrayList<>();
 
-    static {
-        usuarios.add(new Usuario("Admin", "Sistema", "admin@multisports.com", "1234"));
-    }
+    private final UsuarioDAO dao = new UsuarioDAO();
 
     public Usuario validarCredenciales(String email, String password) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equalsIgnoreCase(email) &&
-                    usuario.getPassword().equals(password)) {
-                return usuario;
-            }
+        Usuario u = dao.obtenerPorEmail(email);
+        if (u != null && u.getPassword().equals(password)) {
+            return u;
         }
         return null;
     }
 
-    public boolean registrarUsuario(String nombre, String apellidos, String email, String password) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equalsIgnoreCase(email)) {
-                return false;
-            }
-        }
-        Usuario nuevoUsuario = new Usuario(nombre, apellidos, email, password);
-        usuarios.add(nuevoUsuario);
-        return true;
+    public boolean registrarUsuario(String nombre, String apellidos,
+                                    String email, String password) {
+        if (dao.emailExiste(email)) return false;
+        Usuario u = new Usuario(nombre, apellidos, email, password, false);
+        return dao.guardar(u);
     }
 
     public boolean emailExiste(String email) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equalsIgnoreCase(email)) {
-                return true;
-            }
-        }
-        return false;
+        return dao.emailExiste(email);
     }
 }

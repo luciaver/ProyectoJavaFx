@@ -12,52 +12,39 @@ import org.example.service.AuthService;
 
 public class LoginController {
 
-   @FXML
-    private TextField txtEmail;
+    @FXML private TextField     txtEmail;
+    @FXML private PasswordField txtPassword;
+    @FXML private Label         lblMensaje;
 
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private Label lblMensaje;
-
-    private AuthService authService = new AuthService();
+    private final AuthService authService = new AuthService();
 
     @FXML
     private void onLogin() {
-        //  Obtener lo que escribió el usuario
-        String email = txtEmail.getText().trim();
+        String email    = txtEmail.getText().trim();
         String password = txtPassword.getText();
 
-        //  Validar que no estén vacíos
         if (email.isEmpty() || password.isEmpty()) {
             mostrarError("Por favor completa todos los campos");
             return;
         }
-
         if (!email.contains("@") || !email.contains(".")) {
             mostrarError("Por favor ingresa un email válido");
             return;
         }
 
-        Usuario usuarioEncontrado = authService.validarCredenciales(email, password);
-
-        if (usuarioEncontrado != null) {
+        Usuario encontrado = authService.validarCredenciales(email, password);
+        if (encontrado != null) {
             mostrarExito("¡Bienvenido/a!");
-
             new Thread(() -> {
                 try {
                     Thread.sleep(500);
-                    javafx.application.Platform.runLater(() -> cargarPantallaPrincipal(usuarioEncontrado));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                    javafx.application.Platform.runLater(() -> cargarHome(encontrado));
+                } catch (InterruptedException e) { e.printStackTrace(); }
             }).start();
         } else {
             mostrarError("Email o contraseña incorrectos");
         }
     }
-
 
     @FXML
     private void onRegistro() {
@@ -73,17 +60,14 @@ public class LoginController {
         }
     }
 
-
-    private void cargarPantallaPrincipal(Usuario usuario) {
+    private void cargarHome(Usuario usuario) {
         try {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/home.fxml"));
             Scene scene = new Scene(loader.load());
             scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());
-
-            HomeController homeController = loader.getController();
-            homeController.inicializar(usuario);
-
+            HomeController ctrl = loader.getController();
+            ctrl.inicializar(usuario);
             stage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,14 +75,6 @@ public class LoginController {
         }
     }
 
-    private void mostrarError(String mensaje) {
-        lblMensaje.setText(mensaje);
-        lblMensaje.setStyle("-fx-text-fill: #dc2626;");
-    }
-
-
-    private void mostrarExito(String mensaje) {
-        lblMensaje.setText(mensaje);
-        lblMensaje.setStyle("-fx-text-fill: #10b981;");
-    }
+    private void mostrarError(String msg) { lblMensaje.setText(msg); lblMensaje.getStyleClass().setAll("mensaje", "mensaje-error"); }
+    private void mostrarExito(String msg) { lblMensaje.setText(msg); lblMensaje.getStyleClass().setAll("mensaje", "mensaje-exito"); }
 }

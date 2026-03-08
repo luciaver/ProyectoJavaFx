@@ -11,7 +11,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/fxml/login.fxml"));
         Scene scene = new Scene(loader.load());
         scene.getStylesheets().add(getClass().getResource("/org/example/css/styles.css").toExternalForm());
-        stage.setTitle("GesSports- Login");
+        stage.setTitle("GesSports - Login");
         stage.setScene(scene);
         stage.show();
     }

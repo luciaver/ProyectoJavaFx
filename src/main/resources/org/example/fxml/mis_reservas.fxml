@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.MisReservasController"
+            prefHeight="700.0" prefWidth="1100.0"
+            styleClass="home-root">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="home-header">
+            <padding><Insets top="14" right="24" bottom="14" left="24"/></padding>
+            <Label text="Mis Reservas" styleClass="home-titulo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Volver" onAction="#onVolver" styleClass="boton-registro"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pistas">
+            <VBox fx:id="vboxReservas" spacing="12" styleClass="home-content">
+                <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

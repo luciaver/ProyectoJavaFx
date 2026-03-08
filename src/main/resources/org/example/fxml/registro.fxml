@@ -19,9 +19,9 @@
         <Region prefHeight="5"/>
 
         <VBox spacing="4" prefWidth="310">
-            <Label text="Nombre Completo" styleClass="etiqueta"/>
+            <Label text="Nombre" styleClass="etiqueta"/>
             <TextField fx:id="txtNombre"
-                       promptText="Tu nombre completo"
+                       promptText="Tu nombre"
                        styleClass="campo"/>
         </VBox>
 
@@ -40,16 +40,16 @@
         </VBox>
 
         <VBox spacing="4" prefWidth="310">
-            <Label text="Contraseña" styleClass="etiqueta"/>
+            <Label text="Contrasena" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPassword"
-                           promptText="Mínimo 4 caracteres"
+                           promptText="Minimo 4 caracteres"
                            styleClass="campo"/>
         </VBox>
 
         <VBox spacing="4" prefWidth="310">
-            <Label text="Confirmar Contraseña" styleClass="etiqueta"/>
+            <Label text="Confirmar Contrasena" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPasswordConfirm"
-                           promptText="Repite tu contraseña"
+                           promptText="Repite tu contrasena"
                            styleClass="campo"/>
         </VBox>
 

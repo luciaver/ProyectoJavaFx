@@ -4,52 +4,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx"
-
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="org.example.controller.LoginController"
            prefHeight="600.0" prefWidth="900.0"
            styleClass="fondo">
 
-
-    <VBox alignment="CENTER" spacing="16" styleClass="caja-login" maxWidth="340">
+    <VBox alignment="CENTER" spacing="16" styleClass="caja-login"
+          maxWidth="340" maxHeight="420" prefHeight="420">
         <padding>
-            <Insets top="50" right="35" bottom="50" left="35"/>
+            <Insets top="40" right="35" bottom="40" left="35"/>
         </padding>
 
         <Label text="MultiSports" styleClass="titulo"/>
-        <Region prefHeight="25"/>
+        <Region prefHeight="10"/>
 
-        <VBox spacing="8" prefWidth="310">
+        <VBox spacing="6" prefWidth="270">
             <Label text="Email" styleClass="etiqueta"/>
             <TextField fx:id="txtEmail"
                        promptText="tu@email.com"
-                       styleClass="campo"/>
+                       styleClass="campo"
+                       prefWidth="270"/>
         </VBox>
 
-        <VBox spacing="8" prefWidth="280">
-            <Label text="Contraseña" styleClass="etiqueta"/>
+        <VBox spacing="6" prefWidth="270">
+            <Label text="Contrasena" styleClass="etiqueta"/>
             <PasswordField fx:id="txtPassword"
-                           promptText="Ingresa tu contraseña"
+                           promptText="Ingresa tu contrasena"
                            styleClass="campo"
-                           text=""/>
+                           prefWidth="270"/>
         </VBox>
 
         <Label fx:id="lblMensaje" styleClass="mensaje" text=""/>
 
-        <Button text="Iniciar Sesión"
+        <Button text="Iniciar Sesion"
                 onAction="#onLogin"
                 styleClass="boton-login"
-                prefWidth="310"
+                prefWidth="270"
                 defaultButton="true"/>
-
-        <Region prefHeight="8"/>
 
         <Button text="Registrarse"
                 onAction="#onRegistro"
                 styleClass="boton-registro"
-                prefWidth="330"/>
-
+                prefWidth="270"/>
     </VBox>
 
 </StackPane>

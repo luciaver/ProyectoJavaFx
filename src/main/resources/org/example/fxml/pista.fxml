@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.controller.PistasController"
+           prefHeight="700.0" prefWidth="1100.0"
+           styleClass="fondo">
+
+    <HBox alignment="CENTER" spacing="0">
+        <padding>
+            <Insets top="35" right="60" bottom="35" left="60"/>
+        </padding>
+
+        <!-- LEFT: foto de la pista -->
+        <StackPane styleClass="reserva-img-pane">
+            <ImageView fx:id="imgPista"
+                       fitWidth="400" fitHeight="600"
+                       preserveRatio="false" smooth="true"/>
+            <VBox alignment="BOTTOM_LEFT" styleClass="reserva-img-overlay">
+                <padding>
+                    <Insets bottom="28" left="26" right="26" top="120"/>
+                </padding>
+                <Label fx:id="lblDeportePista"    text="Deporte"     styleClass="reserva-deporte-badge"/>
+                <Label fx:id="lblNombrePista"     text="Pista"       styleClass="reserva-nombre"/>
+                <Label fx:id="lblPrecioPista"     text="0.00 €"      styleClass="reserva-precio"/>
+                <Label fx:id="lblDescripcionPista" text="Descripción" styleClass="reserva-desc" wrapText="true"/>
+            </VBox>
+        </StackPane>
+
+        <!-- RIGHT: formulario de reserva -->
+        <VBox spacing="18" prefWidth="560" prefHeight="600" styleClass="reserva-form-pane">
+
+            <Label text="Nueva Reserva" styleClass="reserva-form-title"/>
+            <Separator styleClass="separator-dark"/>
+
+            <VBox spacing="8">
+                <Label text="📅  Fecha y hora de inicio" styleClass="form-section-label"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <DatePicker fx:id="dpFechaInicio" prefWidth="236" prefHeight="42"
+                                promptText="dd/mm/aaaa" styleClass="input-dark"/>
+                    <ComboBox fx:id="cbHoraInicio" prefWidth="130" prefHeight="42"
+                              promptText="Hora" styleClass="input-dark"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="🏁  Fecha y hora de fin" styleClass="form-section-label"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <DatePicker fx:id="dpFechaFin" prefWidth="236" prefHeight="42"
+                                promptText="dd/mm/aaaa" styleClass="input-dark"/>
+                    <ComboBox fx:id="cbHoraFin" prefWidth="130" prefHeight="42"
+                              promptText="Hora" styleClass="input-dark"/>
+                </HBox>
+            </VBox>
+
+            <Separator styleClass="separator-dark"/>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Total estimado:" styleClass="total-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblTotal" text="--" styleClass="total-value"/>
+            </HBox>
+
+            <Label fx:id="lblMensaje" text="" styleClass="mensaje" wrapText="true"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <HBox spacing="16">
+                <Button text="← Volver" onAction="#onVolver"
+                        prefWidth="150" prefHeight="46" styleClass="btn-outline"/>
+                <Button fx:id="btnConfirmar" text="Confirmar Reserva" onAction="#onConfirmar"
+                        prefHeight="46" disable="true"
+                        HBox.hgrow="ALWAYS" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</StackPane>

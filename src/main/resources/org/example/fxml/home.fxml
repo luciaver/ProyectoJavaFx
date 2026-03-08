@@ -4,37 +4,81 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="org.example.controller.HomeController"
-           prefHeight="600.0" prefWidth="900.0"
-           styleClass="fondo">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.HomeController"
+            prefHeight="700.0" prefWidth="1100.0"
+            styleClass="home-root">
+
+    <left>
+        <VBox spacing="8" styleClass="sidebar" prefWidth="220">
+            <padding><Insets top="30" right="16" bottom="30" left="16"/></padding>
+
+            <Label text="MultiSports" styleClass="sidebar-logo"/>
+            <Label fx:id="lblBienvenida" text="Hola, usuario" styleClass="sidebar-bienvenida"/>
+
+            <Region prefHeight="20"/>
+
+            <Button fx:id="btnPistas"
+                    text="🏟  Instalaciones"
+                    onAction="#onVerPistas"
+                    styleClass="sidebar-btn, sidebar-btn-activo"
+                    maxWidth="Infinity"/>
+
+            <Button fx:id="btnMisReservas"
+                    text="📋  Mis Reservas"
+                    onAction="#onVerMisReservas"
+                    styleClass="sidebar-btn"
+                    maxWidth="Infinity"/>
+
+            <VBox fx:id="panelAdmin" spacing="8" visible="false" managed="false">
+                <Region prefHeight="10"/>
+                <Separator/>
+                <Label text="Administración" styleClass="sidebar-seccion"/>
+                <Button text="⚙  Panel Admin"
+                        onAction="#onIrAdmin"
+                        styleClass="sidebar-btn"
+                        maxWidth="Infinity"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="Cerrar Sesión"
+                    onAction="#onCerrarSesion"
+                    styleClass="sidebar-btn-cerrar"
+                    maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="0" styleClass="home-content">
+
+            <!-- Cabecera -->
+            <VBox styleClass="home-header" spacing="4">
+                <padding><Insets top="28" right="32" bottom="20" left="32"/></padding>
+                <Label fx:id="lblTitulo"    text="Catálogo de Instalaciones" styleClass="home-titulo"/>
+                <Label fx:id="lblSubtitulo" text="Selecciona una pista para reservar"  styleClass="home-subtitulo"/>
+            </VBox>
+            <VBox spacing="12" styleClass="home-toolbar">
+                <padding><Insets top="16" right="32" bottom="16" left="32"/></padding>
+
+                <TextField fx:id="txtBuscar"
+                           promptText="🔍  Buscar instalación…"
+                           styleClass="campo-buscar"
+                           onKeyReleased="#onFiltrar"/>
+
+                <HBox fx:id="barraFiltros" spacing="8"/>
+            </VBox>
 
 
-    <VBox alignment="CENTER" spacing="25" styleClass="caja-login" maxWidth="450">
-        <padding>
-            <Insets top="45" right="45" bottom="45" left="45"/>
-        </padding>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pistas" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="flowPistas"
+                          hgap="20" vgap="20"
+                          styleClass="flow-pistas">
+                    <padding><Insets top="24" right="32" bottom="32" left="32"/></padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
 
-
-        <Label text="¡Bienvenido/a!" styleClass="titulo"/>
-        <Label fx:id="lblNombreUsuario"
-               text="Usuario"
-               style="-fx-font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; -fx-font-size: 24px; -fx-text-fill: #60a5fa; -fx-font-weight: 600;"/>
-        <Region prefHeight="20"/>
-
-        <Label text="Has iniciado sesión correctamente en MultiSports"
-               style="-fx-font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; -fx-font-size: 14px; -fx-text-fill: #cbd5e1; -fx-text-alignment: center;"
-               wrapText="true"/>
-
-        <Region prefHeight="15"/>
-
-        <Button text="Cerrar Sesión"
-                onAction="#onCerrarSesion"
-                styleClass="boton-registro"
-                prefWidth="280"/>
-
-
-    </VBox>
-
-</StackPane>
+</BorderPane>
