@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.example.controller.LoginController"
+           prefHeight="600.0" prefWidth="900.0"
+           styleClass="fondo">
+
+    <VBox alignment="CENTER" spacing="16" styleClass="caja-login"
+          maxWidth="340" maxHeight="420" prefHeight="420">
+        <padding>
+            <Insets top="40" right="35" bottom="40" left="35"/>
+        </padding>
+
+        <Label text="MultiSports" styleClass="titulo"/>
+        <Region prefHeight="10"/>
+
+        <VBox spacing="6" prefWidth="270">
+            <Label text="Email" styleClass="etiqueta"/>
+            <TextField fx:id="txtEmail"
+                       promptText="tu@email.com"
+                       styleClass="campo"
+                       prefWidth="270"/>
+        </VBox>
+
+        <VBox spacing="6" prefWidth="270">
+            <Label text="Contrasena" styleClass="etiqueta"/>
+            <PasswordField fx:id="txtPassword"
+                           promptText="Ingresa tu contrasena"
+                           styleClass="campo"
+                           prefWidth="270"/>
+        </VBox>
+
+        <Label fx:id="lblMensaje" styleClass="mensaje" text=""/>
+
+        <Button text="Iniciar Sesion"
+                onAction="#onLogin"
+                styleClass="boton-login"
+                prefWidth="270"
+                defaultButton="true"/>
+
+        <Button text="Registrarse"
+                onAction="#onRegistro"
+                styleClass="boton-registro"
+                prefWidth="270"/>
+    </VBox>
+
+</StackPane>

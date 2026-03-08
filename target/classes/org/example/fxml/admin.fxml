@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.AdminController"
+            prefHeight="700.0" prefWidth="1100.0"
+            styleClass="home-root">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="admin-header">
+            <padding><Insets top="14" right="24" bottom="14" left="24"/></padding>
+            <Label text="Panel de Administración" styleClass="home-titulo"/>
+            <Label fx:id="lblSesion" text="" styleClass="home-subtitulo"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Volver" onAction="#onVolver" styleClass="boton-registro"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pistas">
+            <VBox spacing="16">
+                <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+
+                <!-- KPIs -->
+                <HBox spacing="12">
+                    <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                        <Label text="Total pistas" styleClass="kpi-label"/>
+                        <Label fx:id="lblKpiPistas" text="0" styleClass="kpi-valor"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                        <Label text="Pistas libres" styleClass="kpi-label"/>
+                        <Label fx:id="lblKpiLibres" text="0" styleClass="kpi-valor-verde"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card" HBox.hgrow="ALWAYS">
+                        <Label text="Reservas" styleClass="kpi-label"/>
+                        <Label fx:id="lblKpiReservas" text="0" styleClass="kpi-valor"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Gráfica -->
+                <VBox styleClass="kpi-card" spacing="8">
+                    <Label text="Reservas por deporte" styleClass="kpi-label"/>
+                    <BarChart fx:id="barChart" prefHeight="200" animated="false"
+                              legendVisible="false" styleClass="grafica">
+                        <xAxis><CategoryAxis/></xAxis>
+                        <yAxis><NumberAxis/></yAxis>
+                    </BarChart>
+                </VBox>
+
+                <!-- Tabs CRUD -->
+                <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="admin-tabs" VBox.vgrow="ALWAYS">
+
+                    <!-- ── TAB PISTAS ── -->
+                    <Tab text="Pistas">
+                        <VBox spacing="10" styleClass="tab-contenido">
+                            <padding><Insets top="10" right="6" bottom="6" left="6"/></padding>
+                            <Button text="+ Nueva Pista" onAction="#onNuevaPista" styleClass="boton-login"/>
+                            <TableView fx:id="tablaPistas" prefHeight="280" styleClass="tabla-admin">
+                                <columns>
+                                    <TableColumn fx:id="colNombre"      text="Nombre"      prefWidth="160"/>
+                                    <TableColumn fx:id="colDeporte"     text="Deporte"     prefWidth="90"/>
+                                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="210"/>
+                                    <TableColumn fx:id="colPrecio"      text="Precio"      prefWidth="80"/>
+                                    <TableColumn fx:id="colEstado"      text="Estado"      prefWidth="80"/>
+                                    <TableColumn fx:id="colAcciones"    text="Acciones"    prefWidth="155"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </Tab>
+
+                    <!-- ── TAB USUARIOS ── -->
+                    <Tab text="Usuarios">
+                        <VBox spacing="10" styleClass="tab-contenido">
+                            <padding><Insets top="10" right="6" bottom="6" left="6"/></padding>
+                            <Button text="+ Nuevo Usuario" onAction="#onNuevoUsuario" styleClass="boton-login"/>
+                            <TableView fx:id="tablaUsuarios" prefHeight="280" styleClass="tabla-admin">
+                                <columns>
+                                    <TableColumn fx:id="colUsNombre"   text="Nombre completo" prefWidth="240"/>
+                                    <TableColumn fx:id="colUsEmail"    text="Email"            prefWidth="260"/>
+                                    <TableColumn fx:id="colUsAcciones" text="Acciones"         prefWidth="160"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </Tab>
+
+                    <!-- ── TAB RESERVAS ── -->
+                    <Tab text="Reservas">
+                        <TableView fx:id="tablaReservas" prefHeight="320" styleClass="tabla-admin">
+                            <columns>
+                                <TableColumn fx:id="colResPista"    text="Pista"    prefWidth="155"/>
+                                <TableColumn fx:id="colResUsuario"  text="Usuario"  prefWidth="170"/>
+                                <TableColumn fx:id="colResInicio"   text="Inicio"   prefWidth="140"/>
+                                <TableColumn fx:id="colResFin"      text="Fin"      prefWidth="140"/>
+                                <TableColumn fx:id="colResAcciones" text="Acciones" prefWidth="110"/>
+                            </columns>
+                        </TableView>
+                    </Tab>
+
+                </TabPane>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
